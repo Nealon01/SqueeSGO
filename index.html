@@ -88,7 +88,7 @@
                     <label>Search: <input ng-model="searchText"></label>
                     <div ng-repeat="v in videos | filter:searchText | orderBy:'name'">
                         <div class="col-lg-2" style="margin-right:10px;margin-bottom:10px;">
-                            <iframe align="left" width="196" height="110" ng-src="{{v.url}}" frameborder="0" scrolling="no"></iframe>
+                            <iframe align="left" width="196" height="110" ng-src="{{v.url}}" frameborder="0" scrolling="no" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
