@@ -2,7 +2,7 @@
 <html lang="en" ng-app="app">
 
 <head>
-
+    <base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,173 +25,52 @@
     <![endif]-->
 
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src='js/sql.js'></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+    <script src='js/libs/sql.js'></script>
+
     <script src="js/script.js"></script>
+
+    <script src="js/controllers/CSController.js"></script>
+    <script src="js/controllers/HomeController.js"></script>
+    <script src="js/controllers/MainController.js"></script>
+    <script src="js/controllers/SqueeController.js"></script>
+    <script src="js/controllers/VideosController.js"></script>
 </head>
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
-<body ng-controller="ctrl" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">SqueeSGO</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#videos">Videos</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#counterstrike">Counter-Strike</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#squee">Squee</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<body ng-app="app" ng-controller="MainController" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" rel="home" href="Home">SqueeSGO</a>
         </div>
-        <!-- /.container -->
-    </nav>
-    <!-- Intro Section -->
-    <section id="intro" class="intro-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Featured Video</h1>
-                    <iframe width="1080" height="630" src="https://www.youtube.com/embed/TI4pVoLWRp8" frameborder="0" allowfullscreen></iframe>
-                    <a class="btn btn-default page-scroll" href="#videos">More Videos!</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section -->
-    <section id="videos" class="videos-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Videos</h1>
-                    <p>Here are additional CS:GO vidoes. Try searching by video name or tags like <a href="" ng-click="searchText = 'fun'">"fun"</a>, <a href="" ng-click="searchText = 'tutorial'">"tutorial"</a>, or <a href="" ng-click="searchText = 'match'">"match"</a></p>
-                    <label>Search: <input ng-model="searchText"></label>
-                    <div ng-repeat="v in videos | filter:searchText | orderBy:'name'">
-                        <div class="col-lg-2" style="margin-right:10px;margin-bottom:10px;">
-                            <iframe align="left" width="196" height="110" ng-src="{{v.url}}" frameborder="0" scrolling="no" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Services Section -->
-    <section id="counterstrike" class="counterstrike-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/3/33/Counter-Strike_Logo.png" />
-                    <p><a target="_blank" href="http://blog.counter-strike.net/">Counter-Strike</a> is a First Person Shooter game made by Valve that focuses on Terrorist vs Counter-Terrorist Scenarios.  It is one of the most widely played FPS games in the world, and boasts a very large competitive scene.</p>
-                    <div style="text-align: left;">
-                        <h4>
-                            Streamers
-                            <span style="cursor: pointer" ng-show="StreamersShow" class="glyphicon glyphicon-minus-sign" ng-click="toggleStreamers()"></span>
-                            <span style="cursor: pointer" ng-hide="StreamersShow" class="glyphicon glyphicon-plus-sign" ng-click="toggleStreamers()"></span>
-                        </h4>
-                        <div ng-show="StreamersShow">
-                            <ul>
-                                <li ng-repeat="s in streamers"><a target="_blank" href="{{s.url}}">{{s.name}}</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div style="text-align: left;">
-                        <h4>
-                            AutoExec
-                            <span style="cursor: pointer" ng-show="AutoExecShow" class="glyphicon glyphicon-minus-sign" ng-click="toggleAutoExec()"></span>
-                            <span style="cursor: pointer" ng-hide="AutoExecShow" class="glyphicon glyphicon-plus-sign" ng-click="toggleAutoExec()"></span>
-                        </h4>
-                        <div ng-show="AutoExecShow">
-                            <p>An autoexec is a file that is launched at startup and configures Counter-Strike settings according to the commands listed in the file.  Most players use this as a way to customise game settings to their preference.  A sample autoexec can be downloaded below.</p>
-                            <a href="resource/autoexec.cfg" download="autoexec.cfg">autoexec.cfg</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="squee" class="squee-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Squee Squad</h1>
-                    <p>Squee is nothing more than a random name for a bunch of friends who play video games together.  We've played a bunch of games in the past, and just happen to enjoy CS:GO right now.</p>
-                    <br/>
-                    <div style="text-align: left;">
-                        <h4>Games We Play 
-                            <span style="cursor: pointer" ng-show="GamesWePlayShow" class="glyphicon glyphicon-minus-sign" ng-click="toggleGames()"></span>
-                            <span style="cursor: pointer" ng-hide="GamesWePlayShow" class="glyphicon glyphicon-plus-sign" ng-click="toggleGames()"></span>
-                        </h4>
-                        <div ng-show="GamesWePlayShow">
-                            <ul>
-                                <li ng-repeat="game in games"><a target="_blank" href="{{game.url}}">{{game.name}}</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div style="text-align: left;">
-                        <h4>
-                            Join Us
-                            <span style="cursor: pointer" ng-show="JoinUsShow" class="glyphicon glyphicon-minus-sign" ng-click="toggleJoin()"></span>
-                            <span style="cursor: pointer" ng-hide="JoinUsShow" class="glyphicon glyphicon-plus-sign" ng-click="toggleJoin()"></span>
-                        </h4>
-                        <div ng-show="JoinUsShow">
-                            <label>Name: <input type="text" ng-model="request.name"></label><br/>
-                            <label>Email: <input type="text" ng-model="request.email"></label><br/>
-                            <button ng-click="addRequest(request.name, request.email)">Submit</button>
-                        </div>
-                    </div>
 
-                    <div style="text-align: left;">
-                        <h4>
-                            Requests
-                            <span style="cursor: pointer" ng-show="RequestsShow" class="glyphicon glyphicon-minus-sign" ng-click="toggleRequests()"></span>
-                            <span style="cursor: pointer" ng-hide="RequestsShow" class="glyphicon glyphicon-plus-sign" ng-click="toggleRequests()"></span>
-                        </h4>
-                        <div ng-show="RequestsShow">
-                            <button ng-click="getAllRequests()">Get All</button><br/><br />
-                            <table>
-                                <tr ng-repeat="r in requests">
-                                    <td>{{ r[0] }}</td>
-                                    <td>{{ r[1] }}</td>
-                                    <td>{{ r[2] }}</td>
-                                    <td>{{ r[3] }}</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav pull-right">
+
+                <li><a href="videos">Videos</a></li>
+                <li><a href="cs">CounterStrike</a></li>
+                <li><a href="squee">Squee</a></li>
+            </ul>
         </div>
-    </section>
+    </div>
+    
+    <div class="full" ng-view></div>
+
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/libs/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
 
     <!-- Scrolling Nav JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/scrolling-nav.js"></script>
+    <script src="js/libs/jquery.easing.min.js"></script>
 </body>
 
 </html>

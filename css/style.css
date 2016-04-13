@@ -9,3 +9,18 @@ table tr:nth-child(odd)	{
 table tr:nth-child(even) {
   background-color: #ffffff;
 }
+
+.full {
+    padding-top: 50px;
+    height: 100%;
+}
+
+.center {
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}

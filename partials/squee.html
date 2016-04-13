@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Squee Squad</h1>
+            <p>Squee is nothing more than a random name for a bunch of friends who play video games together.  We've played a bunch of games in the past, and just happen to enjoy CS:GO right now.</p>
+            <br />
+            <div style="text-align: left;">
+                <h4>
+                    Games We Play
+                    <span style="cursor: pointer" ng-show="GamesWePlayShow" class="glyphicon glyphicon-minus-sign" ng-click="toggleGames()"></span>
+                    <span style="cursor: pointer" ng-hide="GamesWePlayShow" class="glyphicon glyphicon-plus-sign" ng-click="toggleGames()"></span>
+                </h4>
+                <div ng-show="GamesWePlayShow">
+                    <ul>
+                        <li ng-repeat="game in games"><a target="_blank" href="{{game.url}}">{{game.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: left;">
+                <h4>
+                    Join Us
+                    <span style="cursor: pointer" ng-show="JoinUsShow" class="glyphicon glyphicon-minus-sign" ng-click="toggleJoin()"></span>
+                    <span style="cursor: pointer" ng-hide="JoinUsShow" class="glyphicon glyphicon-plus-sign" ng-click="toggleJoin()"></span>
+                </h4>
+                <div ng-show="JoinUsShow">
+                    <label>Name: <input type="text" ng-model="request.name"></label><br />
+                    <label>Email: <input type="text" ng-model="request.email"></label><br />
+                    <button ng-click="addRequest(request.name, request.email)">Submit</button>
+                </div>
+            </div>
+
+            <div style="text-align: left;">
+                <h4>
+                    Requests
+                    <span style="cursor: pointer" ng-show="RequestsShow" class="glyphicon glyphicon-minus-sign" ng-click="toggleRequests()"></span>
+                    <span style="cursor: pointer" ng-hide="RequestsShow" class="glyphicon glyphicon-plus-sign" ng-click="toggleRequests()"></span>
+                </h4>
+                <div ng-show="RequestsShow">
+                    <button ng-click="getAllRequests()">Get All</button><br /><br />
+                    <table>
+                        <tr ng-repeat="r in requests">
+                            <td>{{ r[0] }}</td>
+                            <td>{{ r[1] }}</td>
+                            <td>{{ r[2] }}</td>
+                            <td>{{ r[3] }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

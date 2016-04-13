@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Videos</h1>
+            <p>Here are additional CS:GO vidoes. Try searching by video name or tags like <a href="" ng-click="searchText = 'fun'">"fun"</a>, <a href="" ng-click="searchText = 'tutorial'">"tutorial"</a>, or <a href="" ng-click="searchText = 'match'">"match"</a></p>
+            <label>Search: <input ng-model="searchText"></label>
+            <div class="row">
+                <div ng-repeat="v in videos | filter:searchText | orderBy:'name'">
+
+                    <div class="col-lg-2" style="margin-right:10px;margin-bottom:10px;">
+                        <iframe align="left" width="196" height="110" ng-src="{{v.url}}" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
