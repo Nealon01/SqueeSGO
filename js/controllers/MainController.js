@@ -19,6 +19,28 @@ app.controller('MainController', function ($scope, $routeParams) {
         $scope.requests = db.exec("SELECT * FROM Requests;")[0].values;
     };
 
+    $scope.getStatusRequests = function (status) {
+        var temp = db.exec("SELECT * FROM Requests WHERE Status='" + status + "';");
+        if (null == temp[0])
+            return null;
+
+        return temp[0].values;
+    };
+
+    $scope.approveEmail = function (email) {
+        db.run("Update Requests SET Status='Approved' WHERE Email='" + email + "';");
+        $scope.pending = $scope.getStatusRequests("Pending");
+        $scope.approved = $scope.getStatusRequests("Approved");
+        window.localStorage.setItem("mydata", toBinString(db.export()));
+    };
+
+    $scope.removeEmail = function (email) {
+        db.run("DELETE FROM Requests WHERE Email='" + email + "';");
+        $scope.pending = $scope.getStatusRequests("Pending");
+        $scope.approved = $scope.getStatusRequests("Approved");
+        window.localStorage.setItem("mydata", toBinString(db.export()));
+    };
+
     function toBinString(arr) {
         var uarr = new Uint8Array(arr);
         var strings = [], chunksize = 0xffff;

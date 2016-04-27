@@ -1,0 +1,46 @@
+﻿<div class="container">
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <h1>Admin</h1>
+            <br />
+            <div style="text-align: center;">
+                <h4>
+                    Pending Members:
+                </h4>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Request Time</th>
+                        <th>Approve</th>
+                    </tr>
+                    <tr ng-repeat="r in pending">
+                        <td>{{ r[0] }}</td>
+                        <td>{{ r[1] }}</td>
+                        <td>{{ r[2] }}</td>
+                        <td><input type="button" ng-click="approveEmail(r[1])" value="Approve"/></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="text-align: center;">
+                <h4>
+                    Approved Members:
+                </h4>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Request Time</th>
+                        <th>Remove</th>
+                    </tr>
+                    <tr ng-repeat="r in approved">
+                        <td>{{ r[0] }}</td>
+                        <td>{{ r[1] }}</td>
+                        <td>{{ r[2] }}</td>
+                        <td><input type="button" ng-click="removeEmail(r[1])" value="Remove" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

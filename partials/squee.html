@@ -38,6 +38,12 @@
                 <div ng-show="RequestsShow">
                     <button ng-click="getAllRequests()">Get All</button><br /><br />
                     <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Request Time</th>
+                            <th>Status</th>
+                        </tr>
                         <tr ng-repeat="r in requests">
                             <td>{{ r[0] }}</td>
                             <td>{{ r[1] }}</td>

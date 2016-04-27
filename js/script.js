@@ -25,6 +25,10 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl: 'partials/squee.html',
         controller: 'SqueeController'
     })
+    .when('/admin', {
+        templateUrl: 'partials/admin.html',
+        controller: 'AdminController'
+    })
     .otherwise({
         redirectTo: '/home'
     });
