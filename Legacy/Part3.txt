@@ -1,0 +1,9 @@
+What did you change/enhance from part 1?
+	As described in my gist, I converted the site from using the scrolling nav to ng-route.  I like this better, and it lends itself nicely to splitting out controllers.
+	I also wanted to do some touch up on on what you didn't like from Part 1, but was unable to find the feedback.  I tried contacting you for it, and never heard back.  To be clear, I'm not complaining, just explaining.
+If there was a third part to the class project, what would you like to implement?
+	Honestly, I'm not that passionate about this website, so there's really not that much I would add to it.  However, a friend and I are looking into using Electron to build some cool desktop apps with web development.
+What did you learn between part 1 and part 2?
+	Even in the couple of weeks that I hadn't touched this project, I found things that I had done that I didn't like.  It's crazy how much you change as a programmer in such a short amount of time.
+What did you like about this project? How could it have been better?
+	I would have enjoyed this project more if I had a better idea for something I cared more about to work on.  I don't think that's your fault though.  Maybe make a couple templates/suggestions for students to see as examples?
